@@ -20,14 +20,19 @@ import { App } from 'app';
 import { HelmetProvider } from 'react-helmet-async';
 
 import reportWebVitals from 'reportWebVitals';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const client = new QueryClient({});
 
 const MOUNT_NODE = document.getElementById('root') as HTMLElement;
 
 ReactDOM.render(
   <HelmetProvider>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <QueryClientProvider client={client}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </QueryClientProvider>
   </HelmetProvider>,
   MOUNT_NODE,
 );
